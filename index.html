@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Stylist — Your Wardrobe. Your Style. Your Confidence.</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NOTIFICATION TOASTS ================= -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="logo" onclick="showSection('home')">
+            <span class="logo-sparkle">✨</span> Smart Stylist
+        </div>
+
+        <!-- Mobile Navigation Toggle -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" onclick="toggleMobileNav()" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="mainNav">
+            <button class="nav-btn active" data-section="home" onclick="showSection('home')">Home</button>
+            <button class="nav-btn" data-section="wardrobe" onclick="showSection('wardrobe')">My Wardrobe</button>
+            <button class="nav-btn" data-section="style" onclick="showSection('style')">Style Me</button>
+            <button class="nav-btn" data-section="tryon" onclick="showSection('tryon')">Virtual Try-On</button>
+            <button class="nav-btn" data-section="shopping" onclick="showSection('shopping')">Smart Shopping</button>
+            <button class="nav-btn" data-section="profile" onclick="showSection('profile')">Profile</button>
+        </nav>
+    </header>
+
+
+    <!-- ================= HOME DASHBOARD ================= -->
+    <section id="home" class="section active">
+
+        <div class="hero">
+            <div class="hero-text">
+                <p class="small-title">YOUR PERSONAL FASHION ASSISTANT</p>
+
+                <h1>
+                    Dress better.<br>
+                    <span>Feel confident.</span>
+                </h1>
+
+                <p class="hero-tagline">
+                    "Your wardrobe. Your style. Your confidence."
+                </p>
+
+                <p class="hero-desc">
+                    Smart Stylist helps college students and young adults organize their existing clothes, discover creative outfit combinations, explore accessories, and preview complete looks effortlessly.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="main-btn" onclick="showSection('style')">
+                        ✨ Style My Outfit
+                    </button>
+                    <button class="secondary-btn" onclick="showSection('wardrobe')">
+                        👗 Explore My Wardrobe
+                    </button>
+                    <button class="outline-btn" onclick="showSection('tryon')">
+                        🪞 Try-On Studio
+                    </button>
+                </div>
+
+                <div class="hero-stats-bar">
+                    <div class="stat-pill">
+                        <span class="stat-num" id="heroWardrobeCount">0</span>
+                        <span class="stat-lbl">Wardrobe Items</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-pill">
+                        <span class="stat-num" id="heroSavedCount">0</span>
+                        <span class="stat-lbl">Saved Outfits</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-pill">
+                        <span class="stat-num">5</span>
+                        <span class="stat-lbl">Style Occasions</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-card-badge">Campus Look of the Day</div>
+                <div class="fashion-icon">
+                    👗
+                </div>
+
+                <h2>College Chic & Comfort</h2>
+                <p>Casual • College • Relaxed</p>
+
+                <div class="outfit-preview">
+                    <div class="preview-item">
+                        <span class="item-emoji">👕</span>
+                        <span>Oversized Tee</span>
+                    </div>
+                    <div class="preview-item">
+                        <span class="item-emoji">👖</span>
+                        <span>Straight Denim</span>
+                    </div>
+                    <div class="preview-item">
+                        <span class="item-emoji">👟</span>
+                        <span>White Sneakers</span>
+                    </div>
+                    <div class="preview-item">
+                        <span class="item-emoji">👜</span>
+                        <span>Canvas Tote</span>
+                    </div>
+                </div>
+
+                <button class="hero-card-btn" onclick="openPresetOutfit('College', 'Comfortable')">
+                    Recreate This Look ✨
+                </button>
+            </div>
+        </div>
+
+
+        <!-- FEATURES -->
+        <div class="features">
+            <div class="section-heading">
+                <p class="small-title">FEATURES DESIGNED FOR YOU</p>
+                <h2>What Smart Stylist Does</h2>
+                <p class="heading-sub">Everything you need to maximize your closet and style effortlessly</p>
+            </div>
+
+            <div class="feature-container">
+                <div class="feature-card" onclick="showSection('wardrobe')">
+                    <div class="feature-icon">👚</div>
+                    <h3>Digital Wardrobe</h3>
+                    <p>
+                        Upload and organize your tops, bottoms, dresses, shoes, and accessories with smart categorization and local storage.
+                    </p>
+                    <span class="feature-link">Open Wardrobe &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="showSection('style')">
+                    <div class="feature-icon">✨</div>
+                    <h3>Smart Styling</h3>
+                    <p>
+                        Get occasion-tailored outfit pairings that prioritize your own clothes, highlighting missing essentials with stylist advice.
+                    </p>
+                    <span class="feature-link">Style an Outfit &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="showSection('tryon')">
+                    <div class="feature-icon">🪞</div>
+                    <h3>Virtual Try-On</h3>
+                    <p>
+                        Interactive 2D combination studio to mix and match wardrobe pieces on a visual canvas, ready for AI try-on integration.
+                    </p>
+                    <span class="feature-link">Enter Studio &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="showSection('shopping')">
+                    <div class="feature-icon">🛍️</div>
+                    <h3>Smart Shopping</h3>
+                    <p>
+                        Discover curated missing wardrobe essentials and complementary accessories with college-friendly budget estimates.
+                    </p>
+                    <span class="feature-link">Explore Shopping &rarr;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK GET STARTED BANNER -->
+        <div class="quick-banner">
+            <div class="banner-content">
+                <h3>New to Smart Stylist?</h3>
+                <p>Try out the full experience instantly by loading our stylish pre-configured starter wardrobe!</p>
+            </div>
+            <div class="banner-actions">
+                <button class="main-btn" onclick="loadSampleWardrobe(true)">
+                    ✨ Load Starter Closet
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= DIGITAL WARDROBE ================= -->
+    <section id="wardrobe" class="section">
+
+        <div class="page-title">
+            <p class="small-title">DIGITAL CLOSET</p>
+            <h1>My Wardrobe 👗</h1>
+            <p>
+                Upload your clothes, tag details, and curate your personal digital collection.
+            </p>
+        </div>
+
+        <!-- UPLOAD SECTION -->
+        <div class="upload-box">
+            <div class="upload-icon">📸</div>
+            <h2>Add a New Clothing Item</h2>
+            <p>Upload a photo of your clothing item from your device (Max 10MB, auto-compressed for local storage).</p>
+
+            <div class="upload-dropzone" id="dropZone" onclick="document.getElementById('clothingImage').click()">
+                <div class="dropzone-inner">
+                    <span class="dropzone-icon">📁</span>
+                    <p><strong>Click to browse</strong> or drag & drop an image here</p>
+                    <span class="dropzone-tip">PNG, JPG, WEBP accepted</span>
+                </div>
+                <input
+                    type="file"
+                    id="clothingImage"
+                    accept="image/*"
+                    onchange="previewClothing(event)"
+                    hidden
+                >
+            </div>
+
+            <!-- IMAGE PREVIEW -->
+            <div id="imagePreview" class="image-preview"></div>
+
+            <!-- ITEM DETAILS FORM -->
+            <div class="item-details-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="itemNameInput">Item Name (Optional)</label>
+                        <input type="text" id="itemNameInput" placeholder="e.g., Oversized Linen Shirt, Wide Leg Jeans" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="itemColorInput">Dominant Colour</label>
+                        <select id="itemColorInput">
+                            <option value="White">White / Cream</option>
+                            <option value="Black">Black</option>
+                            <option value="Blue">Blue / Denim</option>
+                            <option value="Pink">Pink / Rose</option>
+                            <option value="Beige">Beige / Nude</option>
+                            <option value="Green">Green / Olive</option>
+                            <option value="Red">Red / Maroon</option>
+                            <option value="Brown">Brown / Earthy</option>
+                            <option value="Grey">Grey</option>
+                            <option value="Yellow">Yellow / Mustard</option>
+                            <option value="Other">Multi / Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category <span class="required">*</span></label>
+                        <div class="category-buttons" id="categoryButtonsContainer">
+                            <button type="button" class="cat-btn" data-cat="Top" onclick="selectCategory('Top')">👕 Top</button>
+                            <button type="button" class="cat-btn" data-cat="Bottom" onclick="selectCategory('Bottom')">👖 Bottom</button>
+                            <button type="button" class="cat-btn" data-cat="Dress" onclick="selectCategory('Dress')">👗 Dress</button>
+                            <button type="button" class="cat-btn" data-cat="Shoes" onclick="selectCategory('Shoes')">👟 Shoes</button>
+                            <button type="button" class="cat-btn" data-cat="Accessory" onclick="selectCategory('Accessory')">👜 Accessory</button>
+                        </div>
+                        <input type="hidden" id="selectedCategoryVal" value="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="itemOccasionInput">Best For (Occasion)</label>
+                        <select id="itemOccasionInput">
+                            <option value="All">Versatile (All Occasions)</option>
+                            <option value="College">College</option>
+                            <option value="Casual">Casual</option>
+                            <option value="Party">Party</option>
+                            <option value="Traditional">Traditional</option>
+                            <option value="Formal">Formal</option>
+                        </select>
+                    </div>
+                </div>
+
+                <p id="selectedCategory" class="selected-category-hint">
+                    No category selected. Please choose a category above.
+                </p>
+
+                <button class="main-btn add-wardrobe-btn" id="addWardrobeBtn" onclick="addToWardrobe()">
+                    ✨ Save to Wardrobe
+                </button>
+            </div>
+        </div>
+
+        <!-- WARDROBE CONTROLS & FILTER BAR -->
+        <div class="wardrobe-section">
+            <div class="wardrobe-header-row">
+                <div class="wardrobe-title-wrap">
+                    <h2>Your Wardrobe Collection</h2>
+                    <span class="wardrobe-count-badge" id="wardrobeCountBadge">0 Items</span>
+                </div>
+
+                <div class="wardrobe-actions-wrap">
+                    <button class="action-pill-btn" onclick="loadSampleWardrobe(false)" title="Fill with starter college fashion pieces">
+                      s  ✨ Load Sample Closet
+                    </button>
+                    <button class="action-pill-btn danger" onclick="confirmClearWardrobe()" title="Clear all wardrobe items">
+                        🗑️ Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Pills -->
+            <div class="wardrobe-filters">
+                <button class="filter-pill active" onclick="filterWardrobe('All', this)">All (<span id="countAll">0</span>)</button>
+                <button class="filter-pill" onclick="filterWardrobe('Top', this)">👕 Tops (<span id="countTop">0</span>)</button>
+                <button class="filter-pill" onclick="filterWardrobe('Bottom', this)">👖 Bottoms (<span id="countBottom">0</span>)</button>
+                <button class="filter-pill" onclick="filterWardrobe('Dress', this)">👗 Dresses (<span id="countDress">0</span>)</button>
+                <button class="filter-pill" onclick="filterWardrobe('Shoes', this)">👟 Shoes (<span id="countShoes">0</span>)</button>
+                <button class="filter-pill" onclick="filterWardrobe('Accessory', this)">👜 Accessories (<span id="countAccessory">0</span>)</button>
+            </div>
+
+            <!-- WARDROBE GRID -->
+            <div id="wardrobeGrid" class="wardrobe-grid">
+                <div class="empty-wardrobe">
+                    <span>👗</span>
+                    <h3>Your wardrobe is currently empty</h3>
+                    <p>
+                        Upload a photo of your clothes above or load our curated starter closet to explore outfit recommendations!
+                    </p>
+                    <button class="secondary-btn" style="margin-top: 15px;" onclick="loadSampleWardrobe(true)">
+                        ✨ Load Starter Wardrobe
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= SMART STYLING ================= -->
+    <section id="style" class="section">
+
+        <div class="page-title">
+            <p class="small-title">PERSONAL STYLING ENGINE</p>
+            <h1>Style Me ✨</h1>
+            <p>
+                Select your occasion and style preferences to generate cohesive outfits using your wardrobe.
+            </p>
+        </div>
+
+        <div class="style-box">
+            <!-- 1. Occasion Selector -->
+            <div class="style-step">
+                <label class="step-label">1. Choose Your Occasion</label>
+                <div class="occasion-grid">
+                    <button class="occasion active" data-occ="College" onclick="selectOccasion('College')">
+                        <span class="occ-icon">🎓</span>
+                        <span>College</span>
+                    </button>
+
+                    <button class="occasion" data-occ="Casual" onclick="selectOccasion('Casual')">
+                        <span class="occ-icon">☕</span>
+                        <span>Casual</span>
+                    </button>
+
+                    <button class="occasion" data-occ="Party" onclick="selectOccasion('Party')">
+                        <span class="occ-icon">🎉</span>
+                        <span>Party</span>
+                    </button>
+
+                    <button class="occasion" data-occ="Traditional" onclick="selectOccasion('Traditional')">
+                        <span class="occ-icon">🪷</span>
+                        <span>Traditional</span>
+                    </button>
+
+                    <button class="occasion" data-occ="Formal" onclick="selectOccasion('Formal')">
+                        <span class="occ-icon">💼</span>
+                        <span>Formal</span>
+                    </button>
+                </div>
+                <p id="selectedOccasion" class="selection-status">Selected occasion: College</p>
+            </div>
+
+            <!-- 2. Style Preference Selector -->
+            <div class="style-step">
+                <label class="step-label">2. Select Your Style Aesthetic</label>
+                <div class="preference-pills" id="stylePreferencePills">
+                    <button type="button" class="pref-pill active" onclick="selectStylePref('Trendy', this)">Trendy & Chic</button>
+                    <button type="button" class="pref-pill" onclick="selectStylePref('Minimal', this)">Minimal & Clean</button>
+                    <button type="button" class="pref-pill" onclick="selectStylePref('Comfortable', this)">Comfortable & Casual</button>
+                    <button type="button" class="pref-pill" onclick="selectStylePref('Elegant', this)">Elegant & Polished</button>
+                </div>
+            </div>
+
+            <!-- 3. Optional Colour Preference -->
+            <div class="style-step">
+                <label class="step-label">3. Optional Colour Preference</label>
+                <div class="preference-pills" id="colorPreferencePills">
+                    <button type="button" class="pref-pill active" onclick="selectColorPref('Any', this)">🌈 Any Palette</button>
+                    <button type="button" class="pref-pill" onclick="selectColorPref('Neutrals', this)">🤍 Neutrals & Pastels</button>
+                    <button type="button" class="pref-pill" onclick="selectColorPref('Warm', this)">🍂 Warm & Earthy</button>
+                    <button type="button" class="pref-pill" onclick="selectColorPref('Bold', this)">🖤 Bold & Dark</button>
+                </div>
+            </div>
+
+            <button class="main-btn generate-btn" onclick="generateOutfit()">
+                ✨ Generate My Outfit
+            </button>
+        </div>
+
+
+        <!-- RECOMMENDATION CARD -->
+        <div id="recommendation" class="recommendation hidden">
+            <div class="rec-header">
+                <span class="rec-badge" id="recOccasionBadge">🎓 College • Trendy</span>
+                <h2>✨ Your Recommended Outfit Combination</h2>
+                <p class="rec-subtitle">Crafted with rule-based styling logic prioritizing your wardrobe items</p>
+            </div>
+
+            <!-- OUTFIT MAIN PIECES -->
+            <div class="recommended-outfit" id="recommendedOutfitGrid">
+                <!-- Top Card -->
+                <div class="recommendation-item" id="recTopCard">
+                    <div class="rec-img-wrapper" id="recTopImgWrap">
+                        <span class="item-fallback-icon">👕</span>
+                    </div>
+                    <div class="rec-item-info">
+                        <span class="rec-item-role">TOP</span>
+                        <h4 id="recommendedTop">White Shirt</h4>
+                        <span class="rec-source-tag" id="recTopSource">Wardrobe Match</span>
+                    </div>
+                </div>
+
+                <!-- Bottom / Dress Card -->
+                <div class="recommendation-item" id="recBottomCard">
+                    <div class="rec-img-wrapper" id="recBottomImgWrap">
+                        <span class="item-fallback-icon">👖</span>
+                    </div>
+                    <div class="rec-item-info">
+                        <span class="rec-item-role">BOTTOM</span>
+                        <h4 id="recommendedBottom">Blue Jeans</h4>
+                        <span class="rec-source-tag" id="recBottomSource">Wardrobe Match</span>
+                    </div>
+                </div>
+
+                <!-- Shoes Card -->
+                <div class="recommendation-item" id="recShoesCard">
+                    <div class="rec-img-wrapper" id="recShoesImgWrap">
+                        <span class="item-fallback-icon">👟</span>
+                    </div>
+                    <div class="rec-item-info">
+                        <span class="rec-item-role">SHOES</span>
+                        <h4 id="recommendedShoes">Sneakers</h4>
+                        <span class="rec-source-tag" id="recShoesSource">Wardrobe Match</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPLEMENTARY ACCESSORIES SECTION -->
+            <div class="accessories-section">
+                <h3>Complementary Accessories & Accents</h3>
+                <div class="accessories-grid" id="recAccessoriesGrid">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- STYLING ADVICE & EXPLANATION -->
+            <div class="style-insight-box">
+                <div class="insight-icon">💡</div>
+                <div class="insight-text">
+                    <strong>Stylist's Note:</strong>
+                    <p id="styleMessage">Your perfect outfit is ready!</p>
+                </div>
+            </div>
+
+            <!-- MISSING ITEMS NOTICE IF ANY -->
+            <div id="missingItemsNotice" class="missing-items-notice hidden">
+                <span class="missing-icon">🛍️</span>
+                <p id="missingItemsText">Some recommended pieces aren't in your wardrobe yet. Check out suggestions in Smart Shopping!</p>
+            </div>
+
+            <!-- RECOMMENDATION ACTIONS -->
+            <div class="rec-actions">
+                <button class="main-btn" onclick="saveCurrentOutfit()">
+                    💖 Save to Favourites
+                </button>
+                <button class="secondary-btn" onclick="generateOutfit()">
+                    🔀 Try Another Combination
+                </button>
+                <button class="outline-btn" onclick="sendToTryOnStudio()">
+                    🪞 Open in Try-On Studio
+                </button>
+                <button class="secondary-btn" onclick="showSection('wardrobe')">
+                    👗 View My Wardrobe
+                </button>
+            </div>
+
+            <!-- TRANSPARENCY NOTICE -->
+            <div class="ai-transparency-card">
+                <span class="ai-chip">Model Note</span>
+                <p>
+                    <strong>Prototype Rule-Based Engine:</strong> This combination is generated using fashion matching algorithms (colour balance, category harmony, occasion appropriateness) from your wardrobe. The architecture is configured for direct integration with multimodal LLMs (like Google Gemini API) for advanced personal styling advice.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= OUTFIT PREVIEW / VIRTUAL TRY-ON ================= -->
+    <section id="tryon" class="section">
+
+        <div class="page-title">
+            <p class="small-title">OUTFIT STUDIO</p>
+            <h1>Virtual Try-On & Studio 🪞</h1>
+            <p>
+                Mix, match, and preview 2D clothing combinations from your wardrobe on an interactive styling board.
+            </p>
+        </div>
+
+        <div class="tryon-container">
+            <!-- Left: Interactive Canvas / Outfit Board -->
+            <div class="tryon-canvas-card">
+                <div class="canvas-header">
+                    <h3>Styling Canvas</h3>
+                    <span class="canvas-badge">2D Outfit Preview</span>
+                </div>
+
+                <div class="tryon-canvas-board" id="tryonCanvasBoard">
+                    <!-- Accessory Slot -->
+                    <div class="canvas-slot slot-accessory" id="slotAccessory" onclick="openStudioTray('Accessory')">
+                        <span class="slot-label">ACCENT / BAG</span>
+                        <div class="slot-content" id="slotAccessoryContent">
+                            <span class="slot-placeholder-icon">👜</span>
+                            <span class="slot-placeholder-text">+ Select Accessory</span>
+                        </div>
+                        <button class="slot-remove-btn" onclick="clearStudioSlot('Accessory', event)" title="Remove item">&times;</button>
+                    </div>
+
+                    <!-- Top Slot -->
+                    <div class="canvas-slot slot-top" id="slotTop" onclick="openStudioTray('Top')">
+                        <span class="slot-label">TOP / UPPER</span>
+                        <div class="slot-content" id="slotTopContent">
+                            <span class="slot-placeholder-icon">👕</span>
+                            <span class="slot-placeholder-text">+ Select Top</span>
+                        </div>
+                        <button class="slot-remove-btn" onclick="clearStudioSlot('Top', event)" title="Remove item">&times;</button>
+                    </div>
+
+                    <!-- Bottom or Dress Slot -->
+                    <div class="canvas-slot slot-bottom" id="slotBottom" onclick="openStudioTray('Bottom')">
+                        <span class="slot-label">BOTTOM / DRESS</span>
+                        <div class="slot-content" id="slotBottomContent">
+                            <span class="slot-placeholder-icon">👖</span>
+                            <span class="slot-placeholder-text">+ Select Bottom or Dress</span>
+                        </div>
+                        <button class="slot-remove-btn" onclick="clearStudioSlot('Bottom', event)" title="Remove item">&times;</button>
+                    </div>
+
+                    <!-- Shoes Slot -->
+                    <div class="canvas-slot slot-shoes" id="slotShoes" onclick="openStudioTray('Shoes')">
+                        <span class="slot-label">FOOTWEAR</span>
+                        <div class="slot-content" id="slotShoesContent">
+                            <span class="slot-placeholder-icon">👟</span>
+                            <span class="slot-placeholder-text">+ Select Shoes</span>
+                        </div>
+                        <button class="slot-remove-btn" onclick="clearStudioSlot('Shoes', event)" title="Remove item">&times;</button>
+                    </div>
+                </div>
+
+                <div class="canvas-controls">
+                    <button class="main-btn" onclick="saveStudioLook()">
+                        💖 Save This Look
+                    </button>
+                    <button class="secondary-btn" onclick="autoAssembleStudioLook()">
+                        ✨ Auto-Style Random Look
+                    </button>
+                    <button class="outline-btn" onclick="resetStudioCanvas()">
+                        ↺ Clear Canvas
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: Wardrobe Picker Drawer -->
+            <div class="tryon-picker-card">
+                <div class="picker-header">
+                    <h3>Select from Wardrobe</h3>
+                    <p>Click any item to place it onto the styling canvas</p>
+                </div>
+
+                <!-- Tray category selector tabs -->
+                <div class="picker-tabs">
+                    <button class="picker-tab active" data-tray="Top" onclick="switchStudioTray('Top', this)">👕 Tops</button>
+                    <button class="picker-tab" data-tray="Bottom" onclick="switchStudioTray('Bottom', this)">👖 Bottoms</button>
+                    <button class="picker-tab" data-tray="Dress" onclick="switchStudioTray('Dress', this)">👗 Dresses</button>
+                    <button class="picker-tab" data-tray="Shoes" onclick="switchStudioTray('Shoes', this)">👟 Shoes</button>
+                    <button class="picker-tab" data-tray="Accessory" onclick="switchStudioTray('Accessory', this)">👜 Accessories</button>
+                </div>
+
+                <!-- Wardrobe Items Grid in Picker -->
+                <div class="picker-items-grid" id="pickerItemsGrid">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- FUTURE AI TRY-ON INTEGRATION ARCHITECTURE CARD -->
+        <div class="ai-architecture-banner">
+            <div class="arch-icon">🤖</div>
+            <div class="arch-content">
+                <h4>AI Virtual Try-On Pipeline (Integration Ready)</h4>
+                <p>
+                    <strong>College Prototype Architecture:</strong> In production, this module connects to an AI image diffusion pipeline (such as IDM-VTON, OOTDiffusion, or Replicate's Try-On API). The user's uploaded portrait and selected garment images are preprocessed, segmented using DensePose, and blended using a latent diffusion model to render photorealistic virtual try-on images.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= SMART SHOPPING ================= -->
+    <section id="shopping" class="section">
+
+        <div class="page-title">
+            <p class="small-title">COLLEGIATE CURATIONS</p>
+            <h1>Smart Shopping & Wardrobe Essentials 🛍️</h1>
+            <p>
+                Discover versatile pieces and accessories to fill wardrobe gaps, tested for maximum outfit combinations.
+            </p>
+        </div>
+
+        <!-- WARDROBE GAP ANALYSIS CARD -->
+        <div class="gap-analysis-card">
+            <div class="gap-icon">✨</div>
+            <div class="gap-content">
+                <h3>Wardrobe Gap Recommendation</h3>
+                <p id="gapAnalysisMessage">
+                    Loading wardrobe intelligence...
+                </p>
+            </div>
+            <button class="action-pill-btn" onclick="showSection('wardrobe')">
+                View Closet Details &rarr;
+            </button>
+        </div>
+
+        <!-- SHOPPING FILTER TABS -->
+        <div class="shopping-filter-bar">
+            <button class="shop-filter-pill active" onclick="filterShoppingCategory('All', this)">All Picks</button>
+            <button class="shop-filter-pill" onclick="filterShoppingCategory('Essential', this)">Closet Essentials</button>
+            <button class="shop-filter-pill" onclick="filterShoppingCategory('Trending', this)">Campus Trends</button>
+            <button class="shop-filter-pill" onclick="filterShoppingCategory('Accessory', this)">Accessories</button>
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div class="shopping-grid" id="shoppingGrid">
+            <!-- Dynamically populated with demo catalog -->
+        </div>
+
+        <!-- DISCLAIMER BANNER -->
+        <div class="shopping-disclaimer">
+            <span>ℹ️</span>
+            <p>
+                <strong>Academic Prototype Demo Data:</strong> All products, estimated prices, and style links are representative placeholders curated for college presentation purposes. Built to interface with fashion affiliate APIs (Myntra, ASOS, Amazon Fashion) upon commercial deployment.
+            </p>
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PROFILE & SAVED OUTFITS ================= -->
+    <section id="profile" class="section">
+
+        <div class="page-title">
+            <p class="small-title">YOUR ACCOUNT</p>
+            <h1>My Profile 👤</h1>
+            <p>Manage your style identity, preferences, and saved outfits.</p>
+        </div>
+
+        <div class="profile-layout">
+            <!-- User Info Card -->
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    👩🏻
+                </div>
+
+                <h2 id="profileUsername">Style Explorer</h2>
+                <p class="profile-role">Campus Fashionista • Smart Stylist Member</p>
+
+                <!-- STATS -->
+                <div class="profile-stats">
+                    <div class="stat-box">
+                        <strong id="itemCount">0</strong>
+                        <span>Wardrobe Items</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <strong id="savedCount">0</strong>
+                        <span>Saved Looks</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <strong id="healthScore">85%</strong>
+                        <span>Closet Versatility</span>
+                    </div>
+                </div>
+
+                <!-- PREFERENCES FORM -->
+                <div class="profile-prefs-form">
+                    <h3>Style Preferences</h3>
+
+                    <div class="form-group">
+                        <label for="prefVibe">Preferred Vibe</label>
+                        <select id="prefVibe" onchange="saveUserPreferences()">
+                            <option value="Trendy & Aesthetic">Trendy & Aesthetic</option>
+                            <option value="Minimalist & Clean">Minimalist & Clean</option>
+                            <option value="Comfy & Casual">Comfy & Casual</option>
+                            <option value="Bold & Experimental">Bold & Experimental</option>
+                            <option value="Classic & Formal">Classic & Formal</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prefCampus">College / Campus</label>
+                        <input type="text" id="prefCampus" placeholder="e.g. University Campus" onchange="saveUserPreferences()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prefPalette">Favourite Palette</label>
+                        <select id="prefPalette" onchange="saveUserPreferences()">
+                            <option value="Soft Pastels & Blush">Soft Pastels & Blush</option>
+                            <option value="Monochrome (Black & White)">Monochrome (Black & White)</option>
+                            <option value="Warm Earth Tones">Warm Earth Tones</option>
+                            <option value="Vibrant & Colorful">Vibrant & Colorful</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- DATA MANAGEMENT -->
+                <div class="profile-danger-zone">
+                    <button class="outline-btn small" onclick="loadSampleWardrobe(false)">
+                        ✨ Reset / Reload Sample Wardrobe
+                    </button>
+                    <button class="outline-btn small danger" onclick="confirmResetAllData()">
+                        🗑️ Reset All Local Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- Saved Outfits Section -->
+            <div class="saved-outfits-container">
+                <div class="saved-header">
+                    <h2>Saved Favourites & Outfits</h2>
+                    <span class="saved-badge" id="savedOutfitsCountBadge">0 Looks</span>
+                </div>
+
+                <div class="saved-outfits-grid" id="savedOutfitsGrid">
+                    <div class="empty-saved-outfits">
+                        <span>💖</span>
+                        <h4>No saved outfits yet</h4>
+                        <p>Generate outfit recommendations in "Style Me" or build combinations in "Virtual Try-On" and click "Save to Favourites"!</p>
+                        <button class="main-btn" style="margin-top: 15px;" onclick="showSection('style')">
+                            ✨ Style An Outfit Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>✨ Smart Stylist</h3>
+                <p>Your wardrobe. Your style. Your confidence.</p>
+                <span class="footer-sub">Smart college fashion assistant & wardrobe organizer</span>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a href="#home" onclick="showSection('home'); return false;">Home Dashboard</a>
+                <a href="#wardrobe" onclick="showSection('wardrobe'); return false;">Digital Wardrobe</a>
+                <a href="#style" onclick="showSection('style'); return false;">Smart Styling</a>
+                <a href="#tryon" onclick="showSection('tryon'); return false;">Virtual Try-On</a>
+                <a href="#shopping" onclick="showSection('shopping'); return false;">Smart Shopping</a>
+                <a href="#profile" onclick="showSection('profile'); return false;">My Profile</a>
+            </div>
+
+            <div class="footer-tech">
+                <h4>Project Scope</h4>
+                <p>College Business & Technology Prototype</p>
+                <p>Vanilla HTML5 • CSS3 • JavaScript (ES6+)</p>
+                <p>Client-side LocalStorage Persistence</p>
+            </div>
+        </div>
+
+        <p class="copyright">
+            © 2026 Smart Stylist | Crafted for College Business & Technology Innovation Showcase
+        </p>
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script src="script.js"></script>
+
+</body>
+</html>
